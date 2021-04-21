@@ -1,0 +1,11 @@
+.Panel {
+  display: block;
+  margin: 28px auto 20px;
+  padding: 28px;
+  width: fit-content;
+  height: 410px;
+  background-color: #f3efe8;
+  box-shadow: 0 0 14px 3px #d3c7b3;
+  border-radius: 5px;
+  text-align: center;
+}
