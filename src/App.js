@@ -4,6 +4,7 @@ import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
 import Filter from './components/Filter';
 import Container from './components/Container';
+// import './styles.base.scss';
 import Panel from './components/Panel';
 
 class App extends Component {
@@ -60,18 +61,20 @@ class App extends Component {
 
     return (
       <Container>
+        <Panel>
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.addContact} />
-        <div>
-        </div>
-        <h1>Contacts</h1>
-        <p>Total amount: {totalContactsCount}</p>
-        <Filter value={filter} onChange={this.changeFilter} />
-        <ContactList
-          contacts={visibleContacts}
-          // contacts={this.state.contacts}
-          onDeleteContact={this.deleteContact}
-        />
+          <ContactForm onSubmit={this.addContact} />
+        </Panel>
+        <Panel>
+          <h1>Contacts</h1>
+          <p className="total">Total amount: {totalContactsCount}</p>
+          <Filter value={filter} onChange={this.changeFilter} />
+          <ContactList
+            contacts={visibleContacts}
+            // contacts={this.state.contacts}
+            onDeleteContact={this.deleteContact}
+            />
+        </Panel>
       </Container>
     );
   }

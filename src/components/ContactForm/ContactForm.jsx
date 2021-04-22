@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
+import './ContactForm.scss';
 
 class ContactForm extends Component {
   state = {
@@ -13,7 +14,7 @@ class ContactForm extends Component {
   handleNumberChange = e => {
     this.setState({ number: e.currentTarget.value });
   };
-  
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -23,13 +24,13 @@ class ContactForm extends Component {
 
   render() {
     return (
-      <form className="InputForm" onSubmit={this.handleSubmit}>
-        <label className="Input__label">
+      <form className="ContactForm" onSubmit={this.handleSubmit}>
+        <label className="ContactForm__label">
           Name
         <input
           type="text"
           name="name"
-          className="InputForm__input"
+          className="ContactForm__input"
           value={this.state.name}
           onChange={this.handleNameChange}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -37,12 +38,12 @@ class ContactForm extends Component {
           required
           />
         </label>
-        <label className="Input__label">
+        <label className="ContactForm__label">
           Number
         <input
           type="tel"
           name="number"
-          className="InputForm__input"
+          className="ContactForm__input"
           value={this.state.number}
           onChange={this.handleNumberChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -50,7 +51,7 @@ class ContactForm extends Component {
           required
           />
         </label>
-        <button type="submit" className="InputForm__button">
+        <button type="submit" className="ContactForm__button">
           Add contact
         </button>
       </form>

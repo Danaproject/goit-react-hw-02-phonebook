@@ -1,0 +1,38 @@
+@import './shared';
+
+body {
+  margin: 0;
+  background-color: $main;
+  color: $main-text;
+  font-family: $primary-font-stack;
+  line-height: 1.2;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1 {
+  font-weight: normal;
+  color: $accent;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.total {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: $button;
+  text-transform: uppercase;
+}

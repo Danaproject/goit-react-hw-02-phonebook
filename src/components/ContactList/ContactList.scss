@@ -1,0 +1,55 @@
+@import '../../styles/colors';
+
+.ContactList {
+  display: block;
+  min-width: 480px;
+  width: fit-content;
+  padding: 0 20px;
+  border-radius: 5px;
+
+  &__text {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+}
+
+.ContactList__item {
+  display: flex;
+  align-items: center;
+  padding: 4px 4px 4px 12px;
+  margin: 0;
+  width: 100%;
+  border: none;
+  background-color: $input;
+  border-radius: 5px;
+
+  &:nth-child(2n + 2) {
+    background-color: $main;
+  }
+}
+
+.ContactList__btn {
+  border: 1px solid $main-border;
+  border-radius: 5px;
+  padding: 10px 10px;
+  background-color: $input;
+  color: $main;
+  font-weight: 500;
+  margin-left: auto;
+  margin-right: 8px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 1px 2px 2px 0 rgb(0 0 0 / 0.5);
+  transition: box-shadow 250ms linear;
+
+  &:active {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  &:hover {
+    background-color: $accent;
+  }
+}
