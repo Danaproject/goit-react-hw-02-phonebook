@@ -4,22 +4,37 @@ import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
 import Filter from './components/Filter';
 import Container from './components/Container';
-// import './styles.base.scss';
 import Panel from './components/Panel';
 
 class App extends Component {
   state = {
-    contacts: [
-      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
-    ],
-    // contacts: [],
+    // contacts: [
+    //   {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+    //   {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+    //   {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+    //   {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+    // ],
+    contacts: [],
     filter: '',
     name: '',
     number: ''
   };
+
+  // dynamicSort = (property) => {
+  //   let sortOrder = 1;
+  //   if(property[0] === "-") {
+  //       sortOrder = -1;
+  //       property = property.substr(1);
+  //   }
+  //   return function (a,b) {
+  //     let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+  //     return result * sortOrder;
+  //   }
+  // }
+
+  ifContactExists = (name) => {
+    return this.state.contacts.some(contact => contact.name === name)
+  }
 
   addContact = (name, number) => {
     const contact = {
@@ -28,9 +43,15 @@ class App extends Component {
       number: number
     };
 
-    this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
-    }));
+    if (!this.ifContactExists(name)) {
+      this.setState(({ contacts }) => ({
+        contacts: [contact, ...contacts],
+      }));
+      // this.state.contacts.sort(this.dynamicSort("name"));
+    } else {
+      alert(`${name} is already in contacts.`);
+    }
+
   };
 
   deleteContact = contactId => {
@@ -38,7 +59,6 @@ class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
-
 
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
@@ -53,12 +73,11 @@ class App extends Component {
     );
   };
 
-
   render() {
     const { contacts, filter } = this.state;
     const totalContactsCount = contacts.length;
     const visibleContacts = this.getFilteredContacts();
-
+    
     return (
       <Container>
         <Panel>
